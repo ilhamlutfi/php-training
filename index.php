@@ -8,6 +8,37 @@ if (!$db) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 
+// cek apakah tombol submit sudah di tekan atau belum
+if (isset($_POST['submit'])) {
+
+    // ambil data dari formulir
+    $nama         = $_POST['nama']; // $_POST['nama'] adalah name dari inputan
+    $agama        = $_POST['agama'];
+    $umur         = $_POST['umur'];
+    $tanggal_lahir = $_POST['tanggal_lahir']; 
+    $alamat       = $_POST['alamat']; 
+    $email        = $_POST['email']; 
+
+    // query insert data
+    $query = "INSERT INTO data_pendaftar VALUES (null, '$nama', '$agama', '$umur', '$tanggal_lahir', '$alamat', '$email', now())";
+
+    // eksekusi query
+    $result = mysqli_query($db, $query);
+
+    // cek query
+    if ($result) {
+        echo "<script>
+            alert('Data berhasil disimpan');
+            document.location.href = 'index.php';
+          </script>";
+    } else {
+        echo "<script>
+            alert('Data gagal disimpan');
+            document.location.href = 'index.php';
+          </script>";
+    }
+}
+
 ?>
 
 
@@ -27,7 +58,7 @@ if (!$db) {
         <h1>Formulir Pendaftaran</h1>
       </div>
 
-      <form action="">
+      <form action="" method="post">
         <div class="mb-3">
           <label for="nama">Nama</label>
           <input type="text" name="nama" id="nama" class="form-control" />
@@ -54,8 +85,8 @@ if (!$db) {
         </div>
 
         <div class="mb-3">
-          <label for="">Kata Sandi</label>
-          <input type="password" name="kata_sandi" class="form-control" />
+          <label for="">Alamat</label>
+          <textarea name="alamat" id="alamat" class="form-control"></textarea>
         </div>
 
         <div class="mb-3">
@@ -64,7 +95,7 @@ if (!$db) {
         </div>
 
         <div class="float-end">
-            <button type="submit" class="btn btn-primary mb-2" title="Tombol Kirim">Kirim</button>
+            <button type="submit" class="btn btn-primary mb-2" title="Tombol Kirim" name="submit">Kirim</button>
         </div>
         
       </form>
