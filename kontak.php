@@ -1,4 +1,8 @@
-<?php include 'layout/header.php'; ?>
+<?php 
+
+$title = 'Kontak';
+
+include 'layout/header.php'; ?>
 
     <div class="container mt-5">
         <h1>Google Map Sekayu</h1>

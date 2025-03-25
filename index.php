@@ -1,5 +1,9 @@
 
-<?php include 'layout/header.php'; ?>
+<?php 
+
+$title = 'Home';
+
+include 'layout/header.php'; ?>
 
     <div class="container mt-5">
         <h1>Belajar PHP Dasar</h1>
