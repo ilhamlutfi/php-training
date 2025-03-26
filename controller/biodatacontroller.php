@@ -35,6 +35,35 @@ function store_biodata($data) {
     return mysqli_affected_rows($db);
 }
 
+// fungsi untuk mengubah data biodata
+function update_biodata($data)
+{
+    global $db;
+
+    // ambil data dari formulir
+    $nama         = $data['nama']; // $data['nama'] adalah name dari inputan
+    $agama        = $data['agama'];
+    $umur         = $data['umur'];
+    $tanggal_lahir = $data['tanggal_lahir'];
+    $alamat       = $data['alamat'];
+    $email        = $data['email'];
+
+    // query update data
+    $query = "UPDATE data_pendaftar SET
+                nama = '$nama',
+                agama = '$agama',
+                umur = '$umur',
+                tanggal_lahir = '$tanggal_lahir',
+                alamat = '$alamat',
+                email = '$email'
+              WHERE id_pendaftar = $data[id_pendaftar]";
+
+    // eksekusi query
+    mysqli_query($db, $query);
+
+    return mysqli_affected_rows($db);
+}
+
 // fungsi untuk menghapus data biodata
 function delete_biodata($id_pendaftar) {
     global $db;

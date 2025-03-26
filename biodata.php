@@ -44,6 +44,7 @@ $biodata = query("SELECT * FROM data_pendaftar ORDER BY id_pendaftar DESC");
                     <td><?= $item['email']; ?></td>
                     <td><?= $item['alamat']; ?></td>
                     <td>
+                        <a href="ubah-biodata.php?id_pendaftar=<?= $item['id_pendaftar']; ?>" class="btn btn-success">Ubah</a>
                         <a href="hapus-biodata.php?id_pendaftar=<?= $item['id_pendaftar']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger">Hapus</a>
                     </td>
                 </tr>
